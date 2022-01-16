@@ -1,0 +1,80 @@
+﻿@model IEnumerable<RestoranNikolic.Projekat.Models.Zakazivanje>
+
+@{
+    ViewBag.Title = "Zakazivanje";
+}
+
+<br />
+<form class="forma">
+    <h2>Zakazivanje</h2>
+</form>
+<br />
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
+    <link href="~/Content/zakazivanjecss.css" rel="stylesheet" />
+</head>
+<br />
+<br />
+<br />
+
+<h5> Ukoliko želite da zakažete, možete to učiniti putem broja telefona 011/123456789 ili klikom na dugme Zakaži gde ćete biti preusmereni na formular za zakazivanje! </h5>
+<br />
+<br />
+
+<p class="dugme">
+
+    @Html.ActionLink("Zakaži", "Create", "ZakazivanjesController", new { @class = "btn btn-primary" })
+
+</p> <br />
+@if (User.Identity.Name == "magdalenanikolic@icloud.com")
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MeniID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojTelefona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeniID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojTelefona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ZakazivanjeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ZakazivanjeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ZakazivanjeID })
+            </td>
+        </tr>
+    }
+
+</table>}

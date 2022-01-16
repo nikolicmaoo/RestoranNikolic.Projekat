@@ -1,0 +1,123 @@
+﻿@model IPagedList<RestoranNikolic.Projekat.Models.Meni>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Meni";
+}
+
+<h2>Meni</h2>
+<br />
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
+    <link href="~/Content/menicss.css" rel="stylesheet" />
+</head>
+<br />
+<h5>
+    Kod nas možete naći veliki izbor hrane i pića!
+</h5>
+<br />
+<img src="~/Slike/slika3.jpg" class="slika1" />
+<img src="~/Slike/slika5.jpg" class="slika2" />
+<img src="~/Slike/slika6.jpg" class="slika3" />
+<br />
+<h5>
+    Celokupni meni kao i cene možete videti u nastavku.
+</h5>
+<br />
+<br />
+
+
+
+<p>
+    @if (User.Identity.Name == "magdalenanikolic@icloud.com")
+    {
+        @Html.ActionLink("Create New", "Create", "MenisController", new { @class = "btn btn-primary" })
+    }
+</p>
+<p style="color:white"> Možete pretražiti proizvod po ceni </p>
+<form method="get">
+    <input type="search" name="unetacena" class="form-control" style="display:inline" />
+    <button type="submit" class="btn btn-primary">Pretraži</button>
+</form>
+<tr>
+    @if (Model.Count() == 0)
+    {
+    <tr>
+        <td colspan="3"> Zao nam je, pretraga se ne podudara sa proizvodima, probajte ponovo! </td>
+    </tr>
+}
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().RestoranID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Pasta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Pizza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Rostilj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Alkohol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Kafa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BezalkoholnaPica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Cena)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestoranID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pasta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pizza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rostilj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alkohol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kafa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BezalkoholnaPica)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+                <td style="padding:inherit">
+                    @if (User.Identity.Name == "magdalenanikolic@icloud.com")
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MeniID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Details", "Details", new { id = item.MeniID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MeniID }, new { @class = "btn btn-primary" })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)

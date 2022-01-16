@@ -1,0 +1,29 @@
+﻿body {
+    background-image: url('../Slike/slika12.jpg');
+    background-repeat: repeat;
+    background-size: 2000px 1000px;
+    font-family: 'Mukta', sans-serif;
+}
+
+h5{
+    text-align:center;
+    color:white;
+}
+
+ul{
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    list-style:none;
+}
+
+.insta, .fb, .tviter{
+    text-align:center;
+    color:white;
+    text-decoration:none;
+    padding: 5px;
+}
+
+div{
+    text-align: center;
+}

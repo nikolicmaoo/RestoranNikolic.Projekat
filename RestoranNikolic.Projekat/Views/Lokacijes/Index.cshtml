@@ -1,0 +1,89 @@
+﻿@model IPagedList<RestoranNikolic.Projekat.Models.Lokacije>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Lokacije";
+}
+
+<br />
+<h2>Lokacije</h2>
+<br />
+<br />
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
+    <link href="~/Content/lokacijecss.css" rel="stylesheet" />
+</head>
+<br />
+<br />
+<body>
+
+    <h5> Naš restoran možete naći na više lokacija u Srbiji! </h5>
+
+    <br />
+    <br />
+
+</body>
+
+
+<p>
+    @if (User.Identity.Name == "magdalenanikolic@icloud.com")
+    {
+        @Html.ActionLink("Create New", "Create", "LokacijesController", new { @class = "btn btn-primary" })
+    }
+</p>
+<p>Pretražite da li se naš restoran nalazi u Vašem gradu!</p>
+<form method="get">
+    <input type="search" name="unetalokacija" class="form-control" style="display:inline" />
+    <button type="submit" class="btn btn-primary">Pretraži</button>
+</form>
+<tr>
+    @if (Model.Count() == 0)
+    {
+    <tr>
+        <td colspan="3"> Zao nam je, nema nas u Vašem gradu! </td>
+    </tr>
+}
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ZakazivanjeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Mesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BrojTelefona)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZakazivanjeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mesto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojTelefona)
+                </td>
+                <td>
+                    @if (User.Identity.Name == "magdalenanikolic@icloud.com")
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LokacijeID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Details", "Details", new { id = item.LokacijeID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LokacijeID }, new { @class = "btn btn-primary" })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)

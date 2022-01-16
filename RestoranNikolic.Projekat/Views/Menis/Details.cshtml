@@ -1,0 +1,82 @@
+﻿@model RestoranNikolic.Projekat.Models.Meni
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Meni</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RestoranID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestoranID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pizza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rostilj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rostilj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alkohol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alkohol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kafa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kafa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BezalkoholnaPica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BezalkoholnaPica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MeniID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

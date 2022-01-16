@@ -1,0 +1,51 @@
+﻿body {
+    background-image: url('../Slike/slika10.jpg');
+    background-repeat: repeat;
+    background-size: 2000px 1000px;
+    font-family: 'Mukta', sans-serif;
+    
+}
+
+.Pozdrav {
+    text-align: center;
+    color: white;
+    font-family: 'Mukta', sans-serif;
+}
+
+.jedan {
+    display: flex;
+    justify-content: center;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'Vujahday Script', cursive;
+}
+
+.radnovreme {
+    text-align: center;
+}
+
+
+h3 {
+    color: white;
+    font-family: 'Mukta', sans-serif;
+    font-size:x-large;
+}
+
+h5 {
+    color: white;
+    font-family: 'Mukta', sans-serif;
+    
+}
+
+.insta, .fb, .tviter {
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    font-size: large;
+    padding: 2px;
+}
+
+p {
+    color: white;
+}

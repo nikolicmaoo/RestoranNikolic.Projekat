@@ -1,0 +1,42 @@
+﻿@model RestoranNikolic.Projekat.Models.Lokacije
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lokacije</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ZakazivanjeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZakazivanjeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojTelefona)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojTelefona)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LokacijeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

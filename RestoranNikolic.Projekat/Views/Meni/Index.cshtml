@@ -1,0 +1,81 @@
+﻿`@model IPagedList<RestoranNikolic.Projekat.Models.Meni>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Meni";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RestoranID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Pasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Pizza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Rostilj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Alkohol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Kafa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().BezalkoholnaPica);
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Cena)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestoranID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pasta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pizza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rostilj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alkohol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kafa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BezalkoholnaPica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MeniID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MeniID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MeniID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)

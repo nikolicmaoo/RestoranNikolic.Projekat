@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RestoranNikolic.Projekat.Models.Restoran>
+
+@{
+    ViewBag.Title = "Restoran";
+}
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
+    <link href="~/Content/restorancss.css" rel="stylesheet" />
+</head> <br /> <br />
+<br /> 
+<h2>Restoran Nikolić </h2> <br /> <br /> <br />
+
+<h4>
+    Ako želite da se opustite uz predivni enterijer i odličnu hranu, ovo je pravo mesto za Vas! <br /> <br /> Restoran Nikolić se nalazi na više lokacija u Srbiji. <br /> <br /> Dobrodošli!
+</h4> <br />
+      <p class="galerija">
+          Galerija slika <br />
+          <img src="~/Slike/slika8.jpg" class="slika2" align="middle" />
+          <img src="~/Slike/slika2.jpg" class="slika2" align="middle"/>
+          <img src="~/Slike/slika7.jpg"  class="slika3" align="middle"/>
+      </p>
+<br /> <br />
+<p style="color:white">
+    @if (User.Identity.Name == "magdalenanikolic@icloud.com")
+            {
+    @Html.ActionLink("Create New", "Create", "RestoransController", new {@class ="btn btn-primary"})
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @if (User.Identity.Name == "magdalenanikolic@icloud.com")
+                {
+            @Html.ActionLink("Edit", "Edit", new { id=item.RestoranID }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.RestoranID }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.RestoranID }, new { @class = "btn btn-primary" })
+            }
+        </td>
+    </tr>
+}
+
+</table>
